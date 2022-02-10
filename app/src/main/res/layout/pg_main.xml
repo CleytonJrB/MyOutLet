@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:contentDescription="TODO"
+      android:src="@drawable/teste" />
+
+    <TextView
+      android:id="@+id/txt_Header"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="120dp"
+      android:layout_marginRight="120dp"
+      android:fontFamily="sans-serif"
+      android:text="@string/app_NameTop"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      android:textStyle="bold" />
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:contentDescription="TODO"
+      android:src="@drawable/bolsa" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/txt_Main"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:fontFamily="sans-serif"
+      android:text="@string/app_MainOne"
+      android:textColor="@color/black"
+      android:textSize="13sp"
+      android:textStyle="bold" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:gravity="center">
+
+      <ImageButton
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/black"
+        android:contentDescription="TODO"
+        android:src="@drawable/novidades" />
+
+      <ImageButton
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/camiseta" />
+
+      <ImageButton
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/calca" />
+
+      <ImageButton
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/jaqueta" />
+    </LinearLayout>
+  </LinearLayout>
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/cardList"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:listitem="@layout/card_item"/>
+  </ScrollView>
+
+</LinearLayout>

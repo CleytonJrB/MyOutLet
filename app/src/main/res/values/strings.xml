@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">MyOutLet</string>
+  <string name="txt_Top">JUST BASICS OUTLET</string>
+  <string name="txt_Down">Find your clothes and accessories near you</string>
+  <string name="btn_Singin">E-MAIL</string>
+  <string name="btn_Register">SENHA</string>
+  <string name="app_NameTop">BASICS</string>
+  <string name="app_NameDown">OUTLET</string>
+  <string name="app_MainOne">CATEGORIES</string>
+</resources>

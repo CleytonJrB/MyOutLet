@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:gravity="fill">
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginBottom="20dp">
+    <ImageView
+      android:id="@+id/skrl_img"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:contentDescription="TODO"
+      android:src="@drawable/rapaz"
+      android:scaleType="centerCrop"/>
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="30dp"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/txt_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/txt_Top"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        android:textStyle="bold" />
+
+      <TextView
+        android:id="@+id/text_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/txt_Down"
+        android:textColor="@color/black"
+        android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <EditText
+
+        android:id="@+id/btn_singin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:width="366dp"
+        android:height="75dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="sans-serif"
+        android:hint="@string/btn_Singin"
+        android:textColor="@color/black"
+        android:inputType="text"/>
+
+      <EditText
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="366dp"
+        android:height="55dp"
+        android:backgroundTint="@color/black"
+        android:hint="@string/btn_Register"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        app:endIconMode="password_toggle"
+        />
+
+    </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>
