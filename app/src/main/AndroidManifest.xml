@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.myoutlet">
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
@@ -10,15 +12,23 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.MyOutLet">
     <activity
-      android:name=".LoginActivity"
+      android:name=".ProductActivity"
       android:exported="false"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+    <activity
+      android:name=".CateActivity"
+      android:exported="false"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    <activity
+      android:name=".LoginActivity"
+      android:exported="false"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     <activity
       android:name=".MainActivity"
       android:exported="false"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     <activity
-      android:name=".SplashScreenActivity"
+      android:name=".splashscreen.SplashScreenActivity"
       android:exported="true"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar">
       <intent-filter>

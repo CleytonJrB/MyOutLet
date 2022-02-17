@@ -4,8 +4,7 @@
   android:layout_height="wrap_content"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:cardElevation="0dp"
-  app:cardCornerRadius="8dp"
-  android:layout_margin="16dp">
+  app:cardCornerRadius="8dp">
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -13,23 +12,46 @@
     android:gravity="start"
     android:orientation="vertical">
 
-  <TextView
-    android:id="@+id/txt_informate"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:fontFamily="sans-serif-black"
-    android:text="TRENDING COLLECTIONS"
-    android:textColor="@color/black"
-    android:textFontWeight="700"
-    android:textSize="13sp" />
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:id="@+id/url"
+      android:visibility="invisible"
+      android:text="url"/>
+ <RelativeLayout
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:layout_gravity="center" >
 
-  <ImageView
-    android:layout_width="match_parent"
-    android:layout_height="450dp"
-    android:layout_margin="10dp"
-    android:src="@drawable/rapaz"
-    android:scaleType="center"/>
+   <ImageView
+     android:id="@+id/img_main"
+     android:layout_width="340dp"
+     android:layout_height="450dp"
+     android:layout_marginStart="10dp"
+     android:layout_marginTop="10dp"
+     android:layout_marginEnd="10dp"
+     android:layout_marginBottom="10dp"
+     android:scaleType="centerCrop"
+     android:src="@drawable/rapaz" />
+
+   <TextView
+     android:id="@+id/txt_informate"
+     android:layout_width="110dp"
+     android:layout_height="wrap_content"
+     android:layout_alignTop="@+id/img_main"
+     android:layout_marginStart="40dp"
+     android:layout_marginTop="380dp"
+     android:layout_marginEnd="20dp"
+     android:layout_marginBottom="20dp"
+     android:fontFamily="sans-serif-black"
+     android:text="TRENDING COLLECTIONS"
+     android:textColor="@color/white"
+     android:textFontWeight="700"
+     android:textSize="13sp" />
+
+
+ </RelativeLayout>
+
   </LinearLayout>
 
 </androidx.cardview.widget.CardView>

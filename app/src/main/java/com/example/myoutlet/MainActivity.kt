@@ -1,37 +1,41 @@
 package com.example.myoutlet
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myoutlet.adapters.MyAdapter
+import com.example.myoutlet.model.Cards
 import com.google.firebase.database.*
 
 
 class MainActivity : AppCompatActivity() {
 
   private lateinit var dbref : DatabaseReference
-  private lateinit var cardRecyclerView: RecyclerView
+  private lateinit var cardRecyclerview: RecyclerView
   private lateinit var cardArrayList : ArrayList<Cards>
-
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.pg_main)
 
-    cardRecyclerView = findViewById(R.id.cardList)
-    cardRecyclerView.layoutManager = LinearLayoutManager(this)
-    cardRecyclerView.setHasFixedSize(true)
+      val clickme = findViewById<ImageButton>(R.id.btn_new)
+
+    clickme.setOnClickListener {
+      val intent = Intent( this,CateActivity::class.java )
+      startActivity(intent)
+    }
+
+    cardRecyclerview = findViewById(R.id.cardList)
+    cardRecyclerview.layoutManager = LinearLayoutManager(this)
+    cardRecyclerview.setHasFixedSize(true)
 
     cardArrayList = arrayListOf<Cards>()
     getCardData()
-
-
-//    val clickme = findViewById<Button>(R.id.btn_singin)
-//
-//    clickme.setOnClickListener {
-//      val intent = Intent( this, LoginActivity::class.java)
-//      startActivity(intent)
-//    }
   }
 
   private fun getCardData() {
@@ -39,22 +43,23 @@ class MainActivity : AppCompatActivity() {
 
     dbref.addValueEventListener(object :ValueEventListener{
       override fun onDataChange(snapshot: DataSnapshot) {
-
         if(snapshot.exists()){
-          for(cardsSnapshot in snapshot.children){
+          for(cardSnapshot in snapshot.children){
 
-            val card =  cardsSnapshot.getValue(Cards::class.java)
+            val card =  cardSnapshot.getValue(Cards::class.java)
+
             cardArrayList.add(card!!)
+
           }
 
-          cardRecyclerView.adapter = MyAdapter(cardArrayList)
+          cardRecyclerview.adapter = MyAdapter(cardArrayList)
 
         }
 
       }
 
       override fun onCancelled(error: DatabaseError) {
-        TODO("Not yet implemented")
+        Log.w(TAG, "www Failed to read value.", error.toException())
       }
 
     })
