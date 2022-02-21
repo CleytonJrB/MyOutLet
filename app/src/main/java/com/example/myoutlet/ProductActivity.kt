@@ -18,7 +18,8 @@ class ProductActivity : AppCompatActivity() {
     setProduct()
 
 
-//    ERROR - ERROR - ERROR
+//    ERROR - Attempt to invoke virtual method 'void android.widget.Button.setOnClickListener(android.view.View$OnClickListener)' on a null object reference
+// Não estou conseguindo fazer a navegação para Activity MapActivit
 //
 //    val OnCLick = findViewById<Button>(R.id.btn_search)
 //
