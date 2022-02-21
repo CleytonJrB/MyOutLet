@@ -1,17 +1,15 @@
 package com.example.myoutlet
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.adapters.MyAdapter
 import com.example.myoutlet.model.Cards
 import com.google.firebase.database.*
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +37,8 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun getCardData() {
-    dbref = FirebaseDatabase.getInstance().getReference("Cards")
+
+    dbref = FirebaseDatabase.getInstance().getReference("Product")
 
     dbref.addValueEventListener(object :ValueEventListener{
       override fun onDataChange(snapshot: DataSnapshot) {
@@ -59,9 +58,8 @@ class MainActivity : AppCompatActivity() {
       }
 
       override fun onCancelled(error: DatabaseError) {
-        Log.w(TAG, "www Failed to read value.", error.toException())
-      }
-
+        Toast.makeText(this@MainActivity,"Error in read Product", Toast.LENGTH_LONG).show()      }
     })
+
   }
 }

@@ -1,12 +1,10 @@
 package com.example.myoutlet.model
 
-class CateItem {
-
-  var descricao : String ?= null
+data class CateItem (
+  var title : String ?= null,
+  var adress : String ?= null,
+  var description : String ?= null,
+  var url : String ?= null,
+  var location : String ?= null,
   var price : String ?= null
-
-  constructor(descricao: String?, price: String?) {
-    this.descricao = descricao
-    this.price = price
-  }
-}
+)

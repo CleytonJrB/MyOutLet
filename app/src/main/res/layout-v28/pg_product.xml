@@ -31,10 +31,10 @@
 
         <TextView
           android:id="@+id/txt_prod_name"
-          android:layout_width="230dp"
+          android:layout_width="240dp"
           android:layout_height="match_parent"
           android:gravity="center"
-          android:text="@string/nameprod"
+          android:text="Oversized Denim Jacket"
           android:textSize="18dp"
           android:textColor="@color/black"
           android:fontFamily="sans-serif"
@@ -44,7 +44,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:gravity="center"
-          android:text="@string/preco_prod"
+          android:text="$67.90"
           android:textSize="20dp"
           android:fontFamily="sans-serif"
           android:textColor="@color/black"
@@ -73,7 +73,6 @@
           android:layout_marginBottom="10dp"
           android:text="@string/description_product"
           android:fontFamily="sans-serif"
-          android:textSize="16sp"
           android:textFontWeight="400"
           android:textColor="@color/black"/>
         <LinearLayout
@@ -82,7 +81,6 @@
           android:gravity="center"
           android:layout_marginBottom="10dp">
           <Button
-            android:id="@+id/btn_favo"
             android:layout_width="170dp"
             android:layout_height="55dp"
             android:layout_marginRight="20dp"
@@ -91,7 +89,6 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/black"/>
           <Button
-            android:id="@+id/btn_search"
             android:layout_width="170dp"
             android:layout_height="55dp"
             android:fontFamily="sans-serif"

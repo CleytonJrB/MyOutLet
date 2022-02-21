@@ -8,16 +8,15 @@
   <string name="app_NameDown">OUTLET</string>
   <string name="app_MainOne">CATEGORIES</string>
   <string name="title_activity_focus_cate">FocusCateActivity</string>
-  <!-- Strings used for fragments for navigation -->
-  <string name="first_fragment_label">First Fragment</string>
-  <string name="second_fragment_label">Second Fragment</string>
+
   <string name="next">Next</string>
   <string name="previous">Previous</string>
 
-  <string name="hello_first_fragment">Hello first fragment</string>
-  <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
   <string name="title_number1">Ribbed polo-Neck Jumper</string>
   <string name="title_number2"><![CDATA[Jack & James]]></string>
-  <string name="price">$39.90</string>
-  <string name="description_product">Straight cut shirt jacket in sturdy, washed denim. Features a pointed collar and buttons down the front. Dropped shoulders and long sleeves with button cuffs. Detachable tie belt at the waist and a rounded hem.</string>
+  <string name="description_product">Descricao</string>
+  <string name="preco_prod">Preco</string>
+  <string name="nameprod">NameProd</string>
+  <string name="collections">COLLECTIONS</string>
 </resources>

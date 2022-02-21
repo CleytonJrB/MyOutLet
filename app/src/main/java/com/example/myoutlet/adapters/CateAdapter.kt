@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.R
 import com.example.myoutlet.model.CateItem
+import com.squareup.picasso.Picasso
 
 class CateAdapter(var context : Context, var catArrayList: ArrayList<CateItem>) : RecyclerView.Adapter<CateAdapter.CateHolder>() {
 
@@ -31,10 +33,17 @@ class CateAdapter(var context : Context, var catArrayList: ArrayList<CateItem>) 
   }
 
   override fun onBindViewHolder(holder: CateHolder, position: Int) {
-    var cateAdapter : CateItem = catArrayList[position]
+    val cateAdapter : CateItem = catArrayList[position]
 
-    holder.tittle.text = cateAdapter.descricao
-    holder.price.text = cateAdapter.price
+    fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
+
+    val priceCate = cateAdapter.price
+
+    holder.tittle.text = cateAdapter.title?.capitalizeWords()
+    holder.price.text = "$${priceCate}"
+
+    val imageTarget = cateAdapter.url
+    Picasso.get().load(imageTarget).into(holder.url)
 
   }
 
@@ -44,8 +53,9 @@ class CateAdapter(var context : Context, var catArrayList: ArrayList<CateItem>) 
 
   class CateHolder(itemView:View, listener:onItemOnClickListener) : RecyclerView.ViewHolder(itemView){
 
-    var tittle : TextView = itemView.findViewById<TextView>(R.id.txt_cate)
-    var price : TextView = itemView.findViewById<TextView>(R.id.txt_price)
+    var tittle : TextView = itemView.findViewById(R.id.txt_cate)
+    var price : TextView = itemView.findViewById(R.id.txt_price)
+    var url : ImageView = itemView.findViewById(R.id.img_cate)
 
     init{
       itemView.setOnClickListener {
