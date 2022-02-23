@@ -74,6 +74,7 @@ class CateActivity : AppCompatActivity() {
         intent.putExtra("image",data?.url)
         intent.putExtra("adress",data?.adress)
         intent.putExtra("location",data?.location)
+        intent.putExtra("store",data?.store)
 
         startActivity(intent)
       }

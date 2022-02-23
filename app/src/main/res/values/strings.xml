@@ -19,4 +19,5 @@
   <string name="preco_prod">Preco</string>
   <string name="nameprod">NameProd</string>
   <string name="collections">COLLECTIONS</string>
+  <string name="description_card">Description Card</string>
 </resources>

@@ -24,7 +24,8 @@ class MyAdapter(private val cardList:ArrayList<Cards>): RecyclerView.Adapter<MyA
     val currentitem = cardList[position]
 
     holder.title.text = currentitem.title?.uppercase()
-
+    val key = currentitem.key
+    key.toString()
     val imageTarget = currentitem.url
     Picasso.get().load(imageTarget).into(holder.url)
 

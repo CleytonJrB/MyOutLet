@@ -1,8 +1,10 @@
 package com.example.myoutlet
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,11 +46,11 @@ class MainActivity : AppCompatActivity() {
       override fun onDataChange(snapshot: DataSnapshot) {
         if(snapshot.exists()){
           for(cardSnapshot in snapshot.children){
-
             val card =  cardSnapshot.getValue(Cards::class.java)
 
-            cardArrayList.add(card!!)
+            Log.d(TAG,"www Cards ${card}",null)
 
+            cardArrayList.add(card!!)
           }
 
           cardRecyclerview.adapter = MyAdapter(cardArrayList)

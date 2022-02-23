@@ -6,5 +6,6 @@ data class CateItem (
   var description : String ?= null,
   var url : String ?= null,
   var location : String ?= null,
-  var price : String ?= null
+  var price : String ?= null,
+  var store : String ?= null
 )

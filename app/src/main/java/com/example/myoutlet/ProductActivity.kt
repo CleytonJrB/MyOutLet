@@ -11,23 +11,13 @@ import com.squareup.picasso.Picasso
 class ProductActivity : AppCompatActivity() {
 
 
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.pg_product)
 
     setProduct()
 
-
-//    ERROR - Attempt to invoke virtual method 'void android.widget.Button.setOnClickListener(android.view.View$OnClickListener)' on a null object reference
-// Não estou conseguindo fazer a navegação para Activity MapActivit
-//
-//    val OnCLick = findViewById<Button>(R.id.btn_search)
-//
-//    OnCLick.setOnClickListener {
-//      val ProdctMap = Intent(this,MapActivity::class.java)
-//
-//      startActivity(ProdctMap)
-//    }
 
   }
 
@@ -44,9 +34,9 @@ class ProductActivity : AppCompatActivity() {
     val descricao = dados?.getString("descricao")
     val preco = dados?.getString("preco")
     val image = dados?.getString("image")
-    val prodLoc = dados?.getString("location")
-    val prodAdress = dados?.getString("adress")
-
+    val mapLoc = dados?.getString("location")
+    val mapAdress = dados?.getString("adress")
+    val mapStore = dados?.getString("store")
 
 
     fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
@@ -58,6 +48,19 @@ class ProductActivity : AppCompatActivity() {
 
     val imageProdTarget = image
     Picasso.get().load(imageProdTarget).into(prodImag)
+
+    val OnCLick = findViewById<Button>(R.id.btn_search)
+
+    OnCLick.setOnClickListener {
+      val intent = Intent(this,MapActivity::class.java)
+
+      intent.putExtra("mapStore", mapStore)
+      intent.putExtra("mapLoc", mapLoc)
+      intent.putExtra("mapAdress", mapAdress)
+
+      startActivity(intent)
+    }
+
 
   }
 
