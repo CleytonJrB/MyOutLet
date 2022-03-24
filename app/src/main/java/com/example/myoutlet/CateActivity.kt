@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.adapters.CateAdapter
 import com.example.myoutlet.adapters.MyAdapter
+import com.example.myoutlet.databinding.PgCateBinding
+import com.example.myoutlet.databinding.PgMapBinding
 import com.example.myoutlet.model.CateItem
 import com.google.firebase.database.*
 
+private lateinit var binding: PgCateBinding
 
 class CateActivity : AppCompatActivity() {
 
@@ -24,9 +27,11 @@ class CateActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.pg_cate)
+    binding = PgCateBinding.inflate(layoutInflater)
+    val view = binding.root
+    setContentView(view)
 
-    recyclerView = findViewById(R.id.recycle_cate)
+    recyclerView = binding.recycleCate
     gridLayoutManager = GridLayoutManager(applicationContext,2,LinearLayoutManager.VERTICAL,false)
     recyclerView?.layoutManager = gridLayoutManager
     recyclerView?.setHasFixedSize(true)

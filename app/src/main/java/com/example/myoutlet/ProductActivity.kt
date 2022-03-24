@@ -6,27 +6,29 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.myoutlet.databinding.PgProductBinding
 import com.squareup.picasso.Picasso
 
 class ProductActivity : AppCompatActivity() {
 
-
+  private lateinit var binding: PgProductBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.pg_product)
+    binding = PgProductBinding.inflate(layoutInflater)
+    val view = binding.root
+    setContentView(view)
 
     setProduct()
-
 
   }
 
   private fun setProduct(){
 
-    val prodName = findViewById<TextView>(R.id.txt_prod_name)
-    val prodPreco = findViewById<TextView>(R.id.txt_prod_price)
-    val prodImag = findViewById<ImageView>(R.id.img_prod)
-    val prodDescr = findViewById<TextView>(R.id.txt_prod_descricao)
+    val prodName = binding.txtProdName
+    val prodPreco = binding.txtProdPrice
+    val prodImag = binding.imgProd
+    val prodDescr = binding.txtProdDescricao
 
     val dados = intent.extras
 
@@ -49,7 +51,7 @@ class ProductActivity : AppCompatActivity() {
     val imageProdTarget = image
     Picasso.get().load(imageProdTarget).into(prodImag)
 
-    val OnCLick = findViewById<Button>(R.id.btn_search)
+    val OnCLick = binding.btnSearch
 
     OnCLick.setOnClickListener {
       val intent = Intent(this,MapActivity::class.java)

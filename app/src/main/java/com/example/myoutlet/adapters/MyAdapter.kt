@@ -1,5 +1,6 @@
 package com.example.myoutlet.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,17 +8,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.R
+import com.example.myoutlet.databinding.CardItemBinding
+import com.example.myoutlet.databinding.CardViewCateBinding
 import com.example.myoutlet.model.Cards
 import com.squareup.picasso.Picasso
 
-class MyAdapter(private val cardList:ArrayList<Cards>): RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
+private lateinit var binding: CardItemBinding
+
+class MyAdapter( private val cardList:ArrayList<Cards>): RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
 
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-    val itemView = LayoutInflater.from(parent.context).inflate(
-      R.layout.card_item,
-    parent,false)
-    return MyViewHolder(itemView)
+
+    binding = CardItemBinding.inflate(LayoutInflater.from(parent.context))
+    val view = binding.root
+//    val itemView = LayoutInflater.from(context).inflate(
+//      R.layout.card_item,
+//    parent,false)
+    return MyViewHolder(view)
   }
 
   override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -36,7 +44,7 @@ class MyAdapter(private val cardList:ArrayList<Cards>): RecyclerView.Adapter<MyA
   }
   class MyViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
 
-    val title : TextView = itemView.findViewById(R.id.txt_informate)
-    val url : ImageView = itemView.findViewById(R.id.img_main)
+    val title : TextView = binding.txtInformate
+    val url : ImageView = binding.imgMain
   }
 }

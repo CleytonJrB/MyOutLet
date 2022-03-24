@@ -2,6 +2,7 @@ package com.example.myoutlet
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myoutlet.databinding.PgMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -10,6 +11,8 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapActivity : AppCompatActivity() {
+
+  private lateinit var binding: PgMapBinding
 
   private val places = arrayListOf(
 
@@ -20,7 +23,9 @@ class MapActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.pg_map)
+    binding = PgMapBinding.inflate(layoutInflater)
+    val view = binding.root
+    setContentView(view)
 
 
     val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment

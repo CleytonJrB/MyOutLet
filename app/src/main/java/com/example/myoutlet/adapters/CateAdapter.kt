@@ -9,8 +9,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.R
+import com.example.myoutlet.databinding.CardViewCateBinding
+import com.example.myoutlet.databinding.PgMapBinding
 import com.example.myoutlet.model.CateItem
 import com.squareup.picasso.Picasso
+
+private lateinit var binding: CardViewCateBinding
 
 class CateAdapter(var context : Context, var catArrayList: ArrayList<CateItem>) : RecyclerView.Adapter<CateAdapter.CateHolder>() {
 
@@ -26,9 +30,11 @@ class CateAdapter(var context : Context, var catArrayList: ArrayList<CateItem>) 
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CateHolder {
 
-    val cateHolder = LayoutInflater.from(parent.context).inflate(R.layout.card_view_cate,parent,false)
+    binding= CardViewCateBinding.inflate(LayoutInflater.from(context))
+    val view = binding.root
+//    val cateHolder = LayoutInflater.from(parent.context).inflate(R.layout.card_view_cate,parent,false)
 
-    return CateHolder(cateHolder,cListener)
+    return CateHolder(view,cListener)
 
   }
 
@@ -53,9 +59,9 @@ class CateAdapter(var context : Context, var catArrayList: ArrayList<CateItem>) 
 
   class CateHolder(itemView:View, listener:onItemOnClickListener) : RecyclerView.ViewHolder(itemView){
 
-    var tittle : TextView = itemView.findViewById(R.id.txt_cate)
-    var price : TextView = itemView.findViewById(R.id.txt_price)
-    var url : ImageView = itemView.findViewById(R.id.img_cate)
+    var tittle : TextView = binding.txtTitle
+    var price : TextView = binding.txtPrice
+    var url : ImageView = binding.imgCate
 
     init{
       itemView.setOnClickListener {

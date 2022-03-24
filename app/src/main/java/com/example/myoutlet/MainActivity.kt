@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.adapters.MyAdapter
+import com.example.myoutlet.databinding.PgMainBinding
 import com.example.myoutlet.model.Cards
 import com.google.firebase.database.*
 
@@ -19,18 +20,21 @@ class MainActivity : AppCompatActivity() {
   private lateinit var cardRecyclerview: RecyclerView
   private lateinit var cardArrayList : ArrayList<Cards>
 
+  private lateinit var binding: PgMainBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.pg_main)
+    binding = PgMainBinding.inflate(layoutInflater)
+    val view = binding.root
+    setContentView(view)
 
-      val clickme = findViewById<ImageButton>(R.id.btn_new)
 
-    clickme.setOnClickListener {
+    binding.btnNew.setOnClickListener {
       val intent = Intent( this,CateActivity::class.java )
       startActivity(intent)
     }
 
-    cardRecyclerview = findViewById(R.id.cardList)
+    cardRecyclerview = binding.cardList
     cardRecyclerview.layoutManager = LinearLayoutManager(this)
     cardRecyclerview.setHasFixedSize(true)
 
