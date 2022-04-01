@@ -58,7 +58,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginLeft="15dp"
-          android:text="DESCRIPTION"
+          android:text="@string/description"
           android:fontFamily="sans-serif"
           android:textFontWeight="800"
           android:textColor="@color/black"/>
@@ -85,7 +85,7 @@
             android:layout_width="170dp"
             android:layout_height="55dp"
             android:layout_marginRight="20dp"
-            android:text="FAVORITOS"
+            android:text="FAVORITES"
             android:fontFamily="sans-serif"
             android:textColor="@color/white"
             android:backgroundTint="@color/black"/>
@@ -94,7 +94,7 @@
             android:layout_width="170dp"
             android:layout_height="55dp"
             android:fontFamily="sans-serif"
-            android:text="PROCURAR"
+            android:text="SEARCH FOR"
             android:textColor="@color/white"
             android:backgroundTint="@color/black"/>
 

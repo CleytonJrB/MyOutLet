@@ -7,9 +7,10 @@ import android.widget.Button
 import com.example.myoutlet.databinding.PgMapBinding
 import com.example.myoutlet.databinding.PgSinginBinding
 
-private lateinit var binding: PgSinginBinding
-
 class LoginActivity : AppCompatActivity() {
+
+  private lateinit var binding: PgSinginBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = PgSinginBinding.inflate(layoutInflater)
@@ -17,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
     setContentView(view)
 
     binding.btnSingin.setOnClickListener {
-      val intent = Intent( this,MainActivity::class.java )
+      val intent = Intent(this, MainActivity::class.java)
       startActivity(intent)
       finish()
     }
