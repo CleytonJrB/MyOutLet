@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">MyOutLet</string>
+  <string name="txt_Top">JUST BASIC OUTLET</string>
+  <string name="txt_Down">Encontre suas roupas e acessórios perto de você</string>
+  <string name="btn_Singin">CONECTAR-SE</string>
+  <string name="btn_Register">REGISTRAR</string>
+  <string name="app_NameTop">BASICS</string>
+  <string name="app_NameDown">OUTLET</string>
+  <string name="app_MainOne">CATEGORIAS</string>
+  <string name="title_activity_focus_cate">FocusCateActivity</string>
+
+  <string name="next">Próximo</string>
+  <string name="previous">ANTERIOR</string>
+
+
+  <string name="title_number1">Ribbed polo-Neck Jumper</string>
+  <string name="title_number2"><![CDATA[Jack & James]]></string>
+  <string name="description_product">Descrição</string>
+  <string name="preco_prod">Preço</string>
+  <string name="nameprod">NameProd</string>
+  <string name="collections">COLEÇÕES</string>
+  <string name="description_card">Descrição do Cartão</string>
+  <string name="description">DESCRIÇÃO</string>
+</resources>
