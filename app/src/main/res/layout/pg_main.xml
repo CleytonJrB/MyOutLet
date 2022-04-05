@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical">
@@ -10,67 +11,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
-  <LinearLayout
-    android:id="@+id/cate_btn"
-    android:layout_width="match_parent"
-    android:layout_height="145dp"
-    android:orientation="vertical"
-    android:visibility="visible">
-
-    <TextView
-      android:id="@+id/txt_Main"
-      android:layout_width="100dp"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:fontFamily="sans-serif"
-      android:text="@string/app_MainOne"
-      android:textColor="@color/black"
-      android:textSize="14sp"
-      android:textStyle="bold" />
-
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="5dp"
-      android:gravity="center">
-
-      <ImageButton
-        android:id="@+id/btn_new"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/novidades" />
-
-      <ImageButton
-        android:id="@+id/btn_shirt"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/camiseta" />
-
-      <ImageButton
-        android:id="@+id/btn_pants"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/calca" />
-
-      <ImageButton
-        android:id="@+id/btn_jackets"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/jaqueta" />
-    </LinearLayout>
-  </LinearLayout>
-
   <androidx.fragment.app.FragmentContainerView
-    android:id="@+id/container_root"
+    android:id="@+id/fragmentContainerView"
+    android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/pg_nav" />
+
+  <!--  <androidx.fragment.app.FragmentContainerView-->
+  <!--    android:name="androidx.navigation."-->
+  <!--    android:id="@+id/container_root"-->
+  <!--    android:layout_width="match_parent"-->
+  <!--    android:layout_height="match_parent"-->
+  <!--    app:defaulNavHost="true"-->
+  <!--    app:navGrap="@navigation/pg_nav"/>-->
 
 </LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/pg_nav"
+  app:startDestination="@id/homeProductFragment">
+
+  <fragment
+    android:id="@+id/homeProductFragment"
+    android:name="com.example.myoutlet.fragments.homeProductFragment"
+    android:label="homeProductFragment"
+    tools:layout="@layout/fragment_list">
+    <action
+      android:id="@+id/fromHomeProductFragmenttoCateFragment"
+      app:destination="@id/cateFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/cateFragment"
+    android:name="com.example.myoutlet.fragments.cateFragment"
+    android:label="cateFragment"
+    tools:layout="@layout/pg_cate">
+    <action
+      android:id="@+id/fromCateFragmenttoHomeProductFragment"
+      app:destination="@id/homeProductFragment" />
+    <action
+      android:id="@+id/fromCateFragmenttoProductFragment"
+      app:destination="@id/productFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/productFragment"
+    android:name="com.example.myoutlet.fragments.productFragment"
+    android:label="productFragment"
+    tools:layout="@layout/pg_product">
+    <action
+      android:id="@+id/fromProductFragmenttoCateFragmentt"
+      app:destination="@id/cateFragment" />
+  </fragment>
+
+</navigation>

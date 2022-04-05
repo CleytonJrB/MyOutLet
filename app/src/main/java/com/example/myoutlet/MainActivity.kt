@@ -3,46 +3,38 @@ package com.example.myoutlet
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.myoutlet.databinding.PgMainBinding
 import com.example.myoutlet.fragments.cateFragment
 import com.example.myoutlet.fragments.homeProductFragment
+import com.example.myoutlet.fragments.productFragment
 import com.example.myoutlet.model.Cards
 import com.google.firebase.database.DatabaseReference
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
-  private lateinit var dbref : DatabaseReference
+  private lateinit var dbref: DatabaseReference
   private lateinit var cardRecyclerview: RecyclerView
-  private lateinit var cardArrayList : ArrayList<Cards>
+  private lateinit var cardArrayList: ArrayList<Cards>
 
   private var _binding: PgMainBinding? = null
   private val binding get() = _binding!!
 
   private lateinit var listProduct: homeProductFragment
   private lateinit var cateFragment: cateFragment
+  private lateinit var productFragment: productFragment
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
+
     super.onCreate(savedInstanceState)
+
     _binding = PgMainBinding.inflate(layoutInflater)
-    var view = binding.root
-    setContentView(view)
 
-    binding.btnNew.setOnClickListener(this)
-
-    listProduct = homeProductFragment()
-    cateFragment = cateFragment(binding)
+    setContentView(binding.root)
 
     Log.d("wwwd", "onCreate View MainActivity")
 
-    if (savedInstanceState == null) {
-
-      setFragment(listProduct)
-
-    }
   }
 
 //    if (savedInstanceState == null) {
@@ -54,7 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //    }
 
 
-    //    binding.btnNew.setOnClickListener {
+  //    binding.btnNew.setOnClickListener {
 ////      val intent = Intent( this,CateActivity::class.java )
 ////      startActivity(intent)
 //
@@ -80,18 +72,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //
 
 
-    private fun setFragment(fragment: Fragment) {
-      val fragmentTransaction = supportFragmentManager.beginTransaction()
-      fragmentTransaction.replace(R.id.container_root, fragment)
-      fragmentTransaction.commit()
-      fragmentTransaction.addToBackStack(null)
-    }
-
-    override fun onClick(v: View?) {
-      when (v?.id) {
-        R.id.btn_new -> {
-          setFragment(cateFragment)
-        }
-      }
-    }
+//    private fun setFragment(fragment: Fragment) {
+//      val fragmentTransaction = supportFragmentManager.beginTransaction()
+//      fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+//      fragmentTransaction.commit()
+//      fragmentTransaction.addToBackStack(null)
+//    }
+//
+//    override fun onClick(v: View?) {
+//      when (v?.id) {
+//        R.id.btn_new -> {
+//          setFragment(cateFragment)
+//        }
+//
+//      }
+//    }
 }

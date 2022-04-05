@@ -15,14 +15,12 @@
       android:layout_margin="12dp"
       android:background="@color/black">
 
-      <TextView
+      <ImageButton
+        android:id="@+id/btn_new_cate"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="NEW"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/novidades" />
     </LinearLayout>
   </LinearLayout>
 

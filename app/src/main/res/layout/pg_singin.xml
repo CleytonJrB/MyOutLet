@@ -5,25 +5,17 @@
   android:layout_height="match_parent"
   android:orientation="vertical">
 
-  <LinearLayout
+  <ImageView
+    android:id="@+id/skrl_img"
     android:layout_width="match_parent"
     android:layout_height="400dp"
-    android:layout_marginBottom="10dp"
-    android:gravity="center"
-    android:orientation="vertical">
-
-    <ImageView
-      android:id="@+id/skrl_img"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:contentDescription="TODO"
-      android:scaleType="centerCrop"
-      android:src="@drawable/rapaz" />
-  </LinearLayout>
+    android:contentDescription="TODO"
+    android:scaleType="centerCrop"
+    android:src="@drawable/rapaz" />
 
   <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="match_parent"
     android:layout_margin="5dp"
     android:gravity="center"
     android:orientation="vertical">

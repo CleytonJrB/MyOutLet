@@ -1,22 +1,21 @@
 package com.example.myoutlet.fragments
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myoutlet.R
 import com.example.myoutlet.adapters.CateAdapter
 //import com.example.myoutlet.adapters.MyAdapter
 import com.example.myoutlet.databinding.PgCateBinding
-import com.example.myoutlet.databinding.PgMainBinding
 import com.example.myoutlet.model.CateItem
 import com.google.firebase.database.*
 
-
-class cateFragment(val bindingMain: PgMainBinding) : Fragment() {
+class cateFragment() : Fragment() {
 
   private var _binding: PgCateBinding? = null
   private val binding get() = _binding!!
@@ -27,12 +26,10 @@ class cateFragment(val bindingMain: PgMainBinding) : Fragment() {
   private var cateArrayList: ArrayList<CateItem>? = null
   private var cateAdapter: CateAdapter? = null
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-
-    bindingMain.cateBtn.visibility = View.GONE
-
+  companion object {
+    fun newInstance() = cateFragment()
   }
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -44,10 +41,21 @@ class cateFragment(val bindingMain: PgMainBinding) : Fragment() {
 
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
-    bindingMain.cateBtn.visibility = View.VISIBLE
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding.btnNewCate.setOnClickListener {
+      findNavController().navigate(R.id.fromCateFragmenttoProductFragment)
+    }
+
   }
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
+  }
+
+
 //  (savedInstanceState: Bundle?) {
 //    super.onCreate(savedInstanceState)
 //    binding = PgCateBinding.inflate(layoutInflater)
