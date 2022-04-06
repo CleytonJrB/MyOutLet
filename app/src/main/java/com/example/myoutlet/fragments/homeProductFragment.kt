@@ -7,13 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.R
+import com.example.myoutlet.adapters.MyAdapter
 import com.example.myoutlet.databinding.FragmentListBinding
+import com.example.myoutlet.model.Cards
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 class homeProductFragment : Fragment() {
 
   private var _binding: FragmentListBinding? = null
   private val binding get() = _binding!!
+
+  private lateinit var cardRecyclerview: RecyclerView
+  private lateinit var cardArrayList: ArrayList<Cards>
 
   companion object {
     fun newInstance() = homeProductFragment()
@@ -27,6 +38,9 @@ class homeProductFragment : Fragment() {
 
     _binding = FragmentListBinding.inflate(inflater, container, false)
     val view = binding.root
+
+    getAllProduct()
+
     return view
 
   }
@@ -38,6 +52,12 @@ class homeProductFragment : Fragment() {
       findNavController().navigate(R.id.fromHomeProductFragmenttoCateFragment)
     }
 
+    cardRecyclerview = binding.recyclerView
+    cardRecyclerview.setHasFixedSize(true)
+
+    cardArrayList = arrayListOf<Cards>()
+
+
   }
 
   override fun onResume() {
@@ -48,6 +68,49 @@ class homeProductFragment : Fragment() {
   override fun onPause() {
     super.onPause()
     Log.d("wwwd", "onPause homeProductFragment")
+  }
+
+  private fun getAllProduct() {
+
+    val db = FirebaseFirestore.getInstance()
+    db.collection("Product")
+      .addSnapshotListener{ snapshot,e->
+        if(e!=null){
+          Log.w("dww", "Listen failed.", e)
+          return@addSnapshotListener
+        }
+        if(snapshot!=null){
+          Log.d("dww", "Current data: ${snapshot.documents}")
+        } else {
+          Log.d("dww", "Current data: null")
+        }
+      }
+
+    var dbb= FirebaseDatabase.getInstance().getReference("Product")
+//
+    dbb.addValueEventListener(object : ValueEventListener {
+      override fun onDataChange(snapshot: DataSnapshot) {
+        if(snapshot.exists()){
+          for(cardSnapshot in snapshot.children){
+//
+            val card =  cardSnapshot.getValue(Cards::class.java)
+
+            cardArrayList.add(card!!)
+
+          }
+
+          cardRecyclerview.adapter = MyAdapter(cardArrayList)
+          Log.d("dww", cardArrayList.toString())
+
+        }
+
+      }
+
+      override fun onCancelled(error: DatabaseError) {
+        Log.d("Error","Error")
+      }
+    })
+
   }
 
 }
