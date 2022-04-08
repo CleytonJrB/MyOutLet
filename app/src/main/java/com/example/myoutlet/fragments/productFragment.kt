@@ -1,11 +1,17 @@
 package com.example.myoutlet.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.myoutlet.R
 import com.example.myoutlet.databinding.PgProductBinding
+import com.example.myoutlet.model.Product
+import com.squareup.picasso.Picasso
 
 class productFragment : Fragment() {
 
@@ -16,6 +22,8 @@ class productFragment : Fragment() {
     fun newInstance() = productFragment()
   }
 
+  private val args: productFragmentArgs by navArgs()
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -24,22 +32,48 @@ class productFragment : Fragment() {
 
     _binding = PgProductBinding.inflate(inflater, container, false)
     val view = binding.root
-    return view
 
-//    setProduct()
+    return view
 
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-//    binding.btnFavo.setOnClickListener {
-//      findNavController().navigate(R.id.fromProductFragmenttoCateFragment)
-//    }
+    binding.btnSearch.setOnClickListener {
+
+      findNavController().navigate(R.id.fromProductFragmenttoMapFragment)
+    }
+
+    setProduct()
 
   }
+  override fun onResume() {
+    super.onResume()
+    Log.d("wwwd", "OnResume ProductFragment")
+  }
 
-//  private fun setProduct(){
+  override fun onPause() {
+    super.onPause()
+    Log.d("wwwd", "onPause ProductFragment")
+  }
+
+  private fun setProduct() {
+
+    fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
+
+    binding.txtProdName.text = args.product.title.capitalizeWords()
+    binding.txtProdPrice.text = "$${args.product.price}"
+    binding.txtProdDescricao.text = args.product.description.capitalize()
+
+    Log.d("setProduct", "${args.product.title},${args.product.price}, ${args.product.description} ")
+
+    val prodImag = binding.imgProd
+    val image = args.product.url
+
+    val imageProdTarget = image
+    Picasso.get().load(imageProdTarget).into(prodImag)
+
 //
 //    val prodName = binding.txtProdName
 //    val prodPreco = binding.txtProdPrice
@@ -80,6 +114,6 @@ class productFragment : Fragment() {
 //    }
 //
 //
-//  }
+  }
 
 }

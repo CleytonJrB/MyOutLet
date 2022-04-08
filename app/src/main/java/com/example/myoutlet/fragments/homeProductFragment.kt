@@ -72,20 +72,6 @@ class homeProductFragment : Fragment() {
 
   private fun getAllProduct() {
 
-    val db = FirebaseFirestore.getInstance()
-    db.collection("Product")
-      .addSnapshotListener{ snapshot,e->
-        if(e!=null){
-          Log.w("dww", "Listen failed.", e)
-          return@addSnapshotListener
-        }
-        if(snapshot!=null){
-          Log.d("dww", "Current data: ${snapshot.documents}")
-        } else {
-          Log.d("dww", "Current data: null")
-        }
-      }
-
     var dbb= FirebaseDatabase.getInstance().getReference("Product")
 //
     dbb.addValueEventListener(object : ValueEventListener {
