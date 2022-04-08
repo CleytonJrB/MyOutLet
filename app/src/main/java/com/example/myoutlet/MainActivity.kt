@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.databinding.PgMainBinding
 import com.example.myoutlet.fragments.cateFragment
 import com.example.myoutlet.fragments.homeProductFragment
+import com.example.myoutlet.fragments.mapFragment
 import com.example.myoutlet.fragments.productFragment
 import com.example.myoutlet.model.Cards
 import com.google.firebase.database.DatabaseReference
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
   private lateinit var listProduct: homeProductFragment
   private lateinit var cateFragment: cateFragment
   private lateinit var productFragment: productFragment
+  private lateinit var mapFragment: mapFragment
 
 
   override fun onCreate(savedInstanceState: Bundle?) {
