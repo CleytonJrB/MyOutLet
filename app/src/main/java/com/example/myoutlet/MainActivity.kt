@@ -14,17 +14,8 @@ import com.google.firebase.database.DatabaseReference
 
 class MainActivity : AppCompatActivity() {
 
-  private lateinit var dbref: DatabaseReference
-  private lateinit var cardRecyclerview: RecyclerView
-  private lateinit var cardArrayList: ArrayList<Cards>
-
   private var _binding: PgMainBinding? = null
   private val binding get() = _binding!!
-
-  private lateinit var listProduct: homeProductFragment
-  private lateinit var cateFragment: cateFragment
-  private lateinit var productFragment: productFragment
-  private lateinit var mapFragment: mapFragment
 
 
   override fun onCreate(savedInstanceState: Bundle?) {

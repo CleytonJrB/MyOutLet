@@ -21,4 +21,7 @@
   <string name="collections">COLLECTIONS</string>
   <string name="description_card">Description Card</string>
   <string name="description">DESCRIPTION</string>
+
+  <string name="return_url_scheme">http</string>
+  <string name="return_url_host">api-na.playground.klarna.com/</string>
 </resources>

@@ -55,13 +55,6 @@ class cateFragment : Fragment(), CateAdapter.OnItemClickListener {
     recyclerView.setHasFixedSize(true)
     cateArrayList = arrayListOf<CateItem>()
 
-//
-//    binding.btnNewCate.setOnClickListener {
-//
-//
-//
-//    }
-
   }
 
   override fun onResume() {
@@ -119,7 +112,6 @@ class cateFragment : Fragment(), CateAdapter.OnItemClickListener {
   }
 
   override fun onItemClick(position: Int) {
-//    Toast.makeText(context, "Item ${position}", Toast.LENGTH_SHORT).show()
     val data = cateArrayList[position]
 
     val action = cateFragmentDirections.fromCateFragmenttoProductFragment(
@@ -133,8 +125,5 @@ class cateFragment : Fragment(), CateAdapter.OnItemClickListener {
 
     findNavController().navigate(action)
 
-
   }
-
-
 }

@@ -19,12 +19,4 @@
     app:defaultNavHost="true"
     app:navGraph="@navigation/pg_nav" />
 
-  <!--  <androidx.fragment.app.FragmentContainerView-->
-  <!--    android:name="androidx.navigation."-->
-  <!--    android:id="@+id/container_root"-->
-  <!--    android:layout_width="match_parent"-->
-  <!--    android:layout_height="match_parent"-->
-  <!--    app:defaulNavHost="true"-->
-  <!--    app:navGrap="@navigation/pg_nav"/>-->
-
 </LinearLayout>

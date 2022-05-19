@@ -56,12 +56,12 @@
       app:strokeWidth="1dp" />
 
     <Button
-      android:id="@+id/btn_register"
+      android:id="@+id/btn_klarna"
       android:layout_width="366dp"
       android:layout_height="60dp"
       android:backgroundTint="@color/black"
       android:fontFamily="sans-serif"
-      android:text="@string/btn_Register"
+      android:text="WebKlarna"
       android:textColor="@color/white"
       android:textSize="16dp" />
   </LinearLayout>

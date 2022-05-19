@@ -1,11 +1,16 @@
 package com.example.myoutlet
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.example.myoutlet.databinding.PgMapBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.myoutlet.Klarna.WebViewKlarna
 import com.example.myoutlet.databinding.PgSinginBinding
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
+import com.squareup.okhttp.OkHttpClient
+import com.squareup.okhttp.Request
+import okhttp3.Response
+import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -16,12 +21,26 @@ class LoginActivity : AppCompatActivity() {
     binding = PgSinginBinding.inflate(layoutInflater)
     val view = binding.root
     setContentView(view)
+    setOnClick()
 
     binding.btnSingin.setOnClickListener {
       val intent = Intent(this, MainActivity::class.java)
       startActivity(intent)
-      finish()
     }
-
   }
+
+  private fun setOnClick() {
+    binding.btnKlarna.setOnClickListener {
+      startSDK("https://www.klarna.com/demo/")
+    }
+  }
+
+  private fun startSDK(url: String?) {
+    Intent(this, WebViewKlarna::class.java)
+      .apply {
+        putExtra(WebViewKlarna.KEY_URL, url)
+        startActivity(this)
+      }
+  }
+
 }

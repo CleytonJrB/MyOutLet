@@ -3,7 +3,8 @@
     package="com.example.myoutlet" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,28 +17,31 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${GOOGLE_MAPS_KEY}" />
-
-<!--        <activity-->
-<!--            android:name=".MapActivity"-->
-<!--            android:exported="false"-->
-<!--          android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
-<!--          />-->
-<!--        <activity-->
-<!--            android:name=".fragments.productFragment"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />-->
-<!--        <activity-->
-<!--            android:name=".CateActivity"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />-->
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:launchMode="singleTop"
+            android:screenOrientation="sensorPortrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Klarna.WebViewKlarna"
+            android:launchMode="singleTop"
+            android:screenOrientation="sensorPortrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/return_url_scheme" />
+                <data android:host="@string/return_url_host" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".splashscreen.SplashScreenActivity"
             android:exported="true"
