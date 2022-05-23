@@ -61,7 +61,7 @@
       android:layout_height="60dp"
       android:backgroundTint="@color/black"
       android:fontFamily="sans-serif"
-      android:text="WebKlarna"
+      android:text="Klarna"
       android:textColor="@color/white"
       android:textSize="16dp" />
   </LinearLayout>
