@@ -17,4 +17,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MyOutLet"
 include ':app'
-include ':kotlinmultiplatformsharedmodule'
