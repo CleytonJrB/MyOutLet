@@ -2,8 +2,11 @@ package com.example.myoutlet
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myoutlet.databinding.PgSinginBinding
+import com.klarna.mobile.sdk.api.payments.KlarnaPaymentActions
+import com.klarna.mobile.sdk.api.payments.KlarnaPaymentView
 
 class LoginActivity : AppCompatActivity() {
 
@@ -14,19 +17,12 @@ class LoginActivity : AppCompatActivity() {
     binding = PgSinginBinding.inflate(layoutInflater)
     val view = binding.root
     setContentView(view)
-    setOnClick()
 
     binding.btnSingin.setOnClickListener {
       val intent = Intent(this, MainActivity::class.java)
       startActivity(intent)
+      finish()
     }
   }
-
-  private fun setOnClick() {
-    binding.btnKlarna.setOnClickListener {
-      val intent = Intent(this,SDKKlarna::class.java)
-      startActivity(intent)
-    }
-  }
-
 }
+
