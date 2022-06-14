@@ -22,4 +22,15 @@
   <style name="Theme.MyOutLet.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
   <style name="Theme.MyOutLet.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+  <style name="Widget.MaterialComponents.BottomSheet.Modal">
+    <item name="android:background">@drawable/rounded_background</item>
+    <item name="backgroundTint">@android:color/transparent</item>
+    <item name="behavior_skipCollapsed">true</item>
+    <item name="behavior_fitToContents">true</item>
+    <item name="behavior_peekHeight">900dp</item>
+    <item name="behavior_hideable">false</item>
+    <!--        <item name="shapeAppearanceOverlay">-->
+    <!--            @style/ShapeAppearanceOverlay.App-->
+    <!--        </item>-->
+  </style>
 </resources>

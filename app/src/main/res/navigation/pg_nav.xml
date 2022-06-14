@@ -7,16 +7,16 @@
 
   <fragment
     android:id="@+id/homeProductFragment"
-    android:name="com.example.myoutlet.fragments.homeProductFragment"
+    android:name="com.example.myoutlet.fragments.HomeProductFragment"
     android:label="homeProductFragment"
     tools:layout="@layout/fragment_list">
     <action
       android:id="@+id/fromHomeProductFragmenttoCateFragment"
-      app:destination="@id/cateFragment" />
+      app:destination="@id/CateFragment" />
   </fragment>
   <fragment
-    android:id="@+id/cateFragment"
-    android:name="com.example.myoutlet.fragments.cateFragment"
+    android:id="@+id/CateFragment"
+    android:name="com.example.myoutlet.fragments.CateFragment"
     android:label="cateFragment"
     tools:layout="@layout/pg_cate">
     <action
@@ -24,16 +24,16 @@
       app:destination="@id/homeProductFragment" />
     <action
       android:id="@+id/fromCateFragmenttoProductFragment"
-      app:destination="@id/productFragment" />
+      app:destination="@id/ProductFragment" />
   </fragment>
   <fragment
-    android:id="@+id/productFragment"
-    android:name="com.example.myoutlet.fragments.productFragment"
+    android:id="@+id/ProductFragment"
+    android:name="com.example.myoutlet.fragments.ProductFragment"
     android:label="productFragment"
     tools:layout="@layout/pg_product">
     <action
       android:id="@+id/fromProductFragmenttoCateFragment"
-      app:destination="@id/cateFragment" />
+      app:destination="@id/CateFragment" />
     <action
         android:id="@+id/fromProductFragmenttoMapFragment"
         app:destination="@id/mapFragment" />
@@ -43,12 +43,12 @@
   </fragment>
   <fragment
       android:id="@+id/mapFragment"
-      android:name="com.example.myoutlet.fragments.mapFragment"
+      android:name="com.example.myoutlet.fragments.MapFragment"
       android:label="mapFragment"
       tools:layout="@layout/pg_map">
     <action
         android:id="@+id/fromMapFragmenttoProductFragment"
-        app:destination="@id/productFragment" />
+        app:destination="@id/ProductFragment" />
   </fragment>
 
 </navigation>

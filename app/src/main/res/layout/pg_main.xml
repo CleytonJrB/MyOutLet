@@ -18,5 +18,12 @@
     android:layout_height="match_parent"
     app:defaultNavHost="true"
     app:navGraph="@navigation/pg_nav" />
+  <com.klarna.mobile.sdk.api.payments.KlarnaPaymentView
+      android:id="@+id/paymentKlarna_View"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
 </LinearLayout>
