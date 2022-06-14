@@ -6,8 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object OrderClient {
 
-  private const val user = "" // please enter user here
-  private const val password = "" // please enter password here
+  private const val user = "PN07911_cd741d91544a" // please enter user here
+  private const val password = "treKXV6yGFIv6xsy" // please enter password here
   private const val baseUrl = "https://api-na.playground.klarna.com/" // please update the url according to your location and desired environment (playground, production)
 
   val instance: OrderService by lazy {

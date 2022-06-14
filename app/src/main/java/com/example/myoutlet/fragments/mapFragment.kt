@@ -16,10 +16,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
-class mapFragment : Fragment() {
+class MapFragment : Fragment() {
 
   companion object {
-    fun newInstance() = mapFragment()
+    fun newInstance() = MapFragment()
   }
 
   private var _binding: PgMapBinding? = null
@@ -89,7 +89,7 @@ class mapFragment : Fragment() {
       googleMap.addMarker(
         MarkerOptions()
           .title(place.name)
-          .snippet(place.adress)
+          .snippet(place.address)
           .position(place.latLng)
       )
     }

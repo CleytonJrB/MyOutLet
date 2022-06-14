@@ -8,46 +8,63 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myoutlet.MyOutLetBridge
 import com.example.myoutlet.R
 import com.example.myoutlet.databinding.PgProductBinding
-import com.example.myoutlet.model.Product
+import com.example.myoutlet.interfaces.OrderResponseCallBack
+import com.example.myoutlet.klarna.KlarnaSingleton
+import com.example.myoutlet.klarna.klarnaReponse.PaymentDeclined
+import com.example.myoutlet.klarna.klarnaReponse.PaymentSuccess
 import com.squareup.picasso.Picasso
 
-class productFragment : Fragment() {
+internal class ProductFragment : Fragment() {
 
   private var _binding: PgProductBinding? = null
   private val binding get() = _binding!!
 
+  private val viewModel = MyOutLetBridge.viewModel
+
   companion object {
-    fun newInstance() = productFragment()
+    fun newInstance() = ProductFragment()
   }
 
-  private val args: productFragmentArgs by navArgs()
+  private val args: ProductFragmentArgs by navArgs()
 
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?,
   ): View? {
-
     _binding = PgProductBinding.inflate(inflater, container, false)
-    val view = binding.root
-
-    return view
-
+    return binding.root
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
+    val paymentSuccessModel = PaymentSuccess()
+    val paymentDeclinedModel = PaymentDeclined()
+
     binding.btnSearch.setOnClickListener {
 
       findNavController().navigate(R.id.fromProductFragmenttoMapFragment)
+    }
+    binding.btnKlarnaP.setOnClickListener {
+      KlarnaSingleton.showPaymentView(object : OrderResponseCallBack {
+        override fun onAuthorizationSuccess() {
+          paymentSuccessModel.show(childFragmentManager, "paymentSuccessModel")
+        }
+
+        override fun onAuthorizationError() {
+          paymentDeclinedModel.show(childFragmentManager, "paymentDeclinedModel")
+        }
+      })
     }
 
     setProduct()
 
   }
+
   override fun onResume() {
     super.onResume()
     Log.d("wwwd", "OnResume ProductFragment")
@@ -62,58 +79,14 @@ class productFragment : Fragment() {
 
     fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
 
-    binding.txtProdName.text = args.product.title.capitalizeWords()
-    binding.txtProdPrice.text = "$${args.product.price}"
-    binding.txtProdDescricao.text = args.product.description.capitalize()
+    binding.txtProdName.text = viewModel?.actualProduct?.value?.title?.capitalizeWords()
+    binding.txtProdPrice.text = "$${viewModel?.actualProduct?.value?.price}"
+    binding.txtProdDescricao.text = viewModel?.actualProduct?.value?.description?.capitalize()
 
-    Log.d("setProduct", "${args.product.title},${args.product.price}, ${args.product.description} ")
+    val prodImage = binding.imgProd
+    val image = viewModel?.actualProduct?.value?.url
 
-    val prodImag = binding.imgProd
-    val image = args.product.url
+    Picasso.get().load(image).into(prodImage)
 
-    val imageProdTarget = image
-    Picasso.get().load(imageProdTarget).into(prodImag)
-
-//
-//    val prodName = binding.txtProdName
-//    val prodPreco = binding.txtProdPrice
-//    val prodImag = binding.imgProd
-//    val prodDescr = binding.txtProdDescricao
-//
-//    val dados = intent.extras
-//
-//    val name = dados?.getString("name")
-//    val descricao = dados?.getString("descricao")
-//    val preco = dados?.getString("preco")
-//    val image = dados?.getString("image")
-//    val mapLoc = dados?.getString("location")
-//    val mapAdress = dados?.getString("adress")
-//    val mapStore = dados?.getString("store")
-//
-//
-//    fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
-//
-//    prodName.text = name?.capitalizeWords()
-//    prodPreco.text = "$${preco}"
-//    prodDescr.text = descricao?.capitalize()
-//
-//
-//    val imageProdTarget = image
-//    Picasso.get().load(imageProdTarget).into(prodImag)
-//
-//    val OnCLick = binding.btnSearch
-//
-//    OnCLick.setOnClickListener {
-//      val intent = Intent(this,MapActivity::class.java)
-//
-//      intent.putExtra("mapStore", mapStore)
-//      intent.putExtra("mapLoc", mapLoc)
-//      intent.putExtra("mapAdress", mapAdress)
-//
-//      startActivity(intent)
-//    }
-//
-//
   }
-
 }
