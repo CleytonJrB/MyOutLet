@@ -7,7 +7,7 @@
 
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/fragment_container_header"
-    android:name="com.example.myoutlet.fragments.headerFragment"
+    android:name="com.example.myoutlet.fragments.HeaderFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 

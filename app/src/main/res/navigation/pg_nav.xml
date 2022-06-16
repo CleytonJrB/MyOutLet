@@ -13,6 +13,9 @@
     <action
       android:id="@+id/fromHomeProductFragmenttoCateFragment"
       app:destination="@id/CateFragment" />
+    <action
+        android:id="@+id/fromHomeFragmenttoCartModalFragment"
+        app:destination="@id/cartModal" />
   </fragment>
   <fragment
     android:id="@+id/CateFragment"
@@ -50,5 +53,9 @@
         android:id="@+id/fromMapFragmenttoProductFragment"
         app:destination="@id/ProductFragment" />
   </fragment>
+  <fragment
+      android:id="@+id/cartModal"
+      android:name="com.example.myoutlet.fragments.CartModal"
+      android:label="CartModal" />
 
 </navigation>
