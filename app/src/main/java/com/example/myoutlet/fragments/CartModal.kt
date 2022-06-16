@@ -35,7 +35,6 @@ class CartModal : BottomSheetDialogFragment() {
   ): View? {
 //    dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
     _binding = CartModalBinding.inflate(inflater, container, false)
-    binding.recyclerViewCartModal.visibility = View.GONE
     return binding.root
   }
 
@@ -52,11 +51,9 @@ class CartModal : BottomSheetDialogFragment() {
     cartRecyclerView.adapter = cartAdapter
     cartArrayList = ArrayList()
 
-    if(MyOutLetBridge.viewModel?.products?.value == null){
-      binding.txtCartEnable.visibility = View.VISIBLE
+    if(MyOutLetBridge.viewModel?.products?.value != null){
+      cartAdapter.setData(MyOutLetBridge.viewModel?.products?.value!!)
     }
-    binding.recyclerViewCartModal.visibility = View.VISIBLE
-    cartAdapter.setData(MyOutLetBridge.viewModel?.products?.value!!)
 
     binding.btnKlarnaP.setOnClickListener {
       KlarnaSingleton.showPaymentView(object : OrderResponseCallBack {
