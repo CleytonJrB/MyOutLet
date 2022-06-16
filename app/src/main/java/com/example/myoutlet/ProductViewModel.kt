@@ -4,12 +4,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myoutlet.model.ModalState
-import com.example.myoutlet.model.Product
+import com.example.myoutlet.model.CateItem
 
 internal class ProductViewModel(private val productRepository: ProductRepository) : ViewModel() {
 
   val modalState = MutableLiveData(ModalState.ON_CHOOSING)
-  val actualProduct = MutableLiveData<Product>()
+  val actualProduct = MutableLiveData<MutableList<CateItem>>()
+
+  val contNumber = MutableLiveData<Int>()
+
+  fun addProductToCart(product: CateItem){
+    var newValue: MutableList<CateItem> = mutableListOf()
+    actualProduct.value?.forEach { product -> newValue.add(product) }
+    newValue.add(product)
+    actualProduct.value = newValue
+  }
 
 
   class MainViewModelFactory(private val repositorySDK: ProductRepository) :

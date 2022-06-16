@@ -47,6 +47,7 @@ class HomeProductFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 
     binding.btnNew.setOnClickListener {
+//      findNavController().navigate(R.id.fromHomeFragmenttoCartModalFragment)
       findNavController().navigate(R.id.fromHomeProductFragmenttoCateFragment)
     }
 
@@ -67,6 +68,8 @@ class HomeProductFragment : Fragment() {
     ).get(ProductViewModel::class.java)
 
     MyOutLetBridge.viewModel = viewModel
+
+    println("HOME FRAGMENT VIEWMODE ${MyOutLetBridge.viewModel!!.modalState.value.toString()}")
 
     viewModel.modalState.observe(viewLifecycleOwner) { state ->
       println(state.toString())

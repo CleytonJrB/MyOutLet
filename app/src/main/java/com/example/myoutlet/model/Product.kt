@@ -3,8 +3,8 @@ package com.example.myoutlet.model
 import java.io.Serializable
 
 data class Product(
-  val title : String,
-  val url : String,
-  val price : String,
-  val description : String,
+  var title : String,
+  var url : String,
+  var price : String,
+  var description : String,
   ):Serializable

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.databinding.CardViewCateBinding
 import com.example.myoutlet.model.CateItem
+import com.example.myoutlet.model.Product
 import com.squareup.picasso.Picasso
 
 class CateAdapter(
@@ -60,13 +61,13 @@ class CateAdapter(
     override fun onClick(p0: View?) {
       val position= adapterPosition
       if(position!= RecyclerView.NO_POSITION) {
-        listener.onItemClick(position)
+        listener.onItemClick(position, catArrayList[position])
       }
     }
   }
 
   interface OnItemClickListener {
-    fun onItemClick(position: Int)
+    fun onItemClick(position: Int,productInfo:CateItem)
   }
 }
 

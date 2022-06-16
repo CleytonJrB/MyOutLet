@@ -10,18 +10,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myoutlet.MyOutLetBridge
 import com.example.myoutlet.R
+import com.example.myoutlet.databinding.FragmentHeaderBinding
 import com.example.myoutlet.databinding.PgProductBinding
 import com.example.myoutlet.interfaces.OrderResponseCallBack
 import com.example.myoutlet.klarna.KlarnaSingleton
 import com.example.myoutlet.klarna.klarnaReponse.PaymentDeclined
 import com.example.myoutlet.klarna.klarnaReponse.PaymentSuccess
+import com.example.myoutlet.model.CateItem
+import com.example.myoutlet.model.Product
 import com.squareup.picasso.Picasso
 
 internal class ProductFragment : Fragment() {
 
   private var _binding: PgProductBinding? = null
   private val binding get() = _binding!!
-
   private val viewModel = MyOutLetBridge.viewModel
 
   companion object {
@@ -42,26 +44,25 @@ internal class ProductFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    val paymentSuccessModel = PaymentSuccess()
-    val paymentDeclinedModel = PaymentDeclined()
-
     binding.btnSearch.setOnClickListener {
 
       findNavController().navigate(R.id.fromProductFragmenttoMapFragment)
     }
-    binding.btnKlarnaP.setOnClickListener {
-      KlarnaSingleton.showPaymentView(object : OrderResponseCallBack {
-        override fun onAuthorizationSuccess() {
-          paymentSuccessModel.show(childFragmentManager, "paymentSuccessModel")
-        }
+    binding.btnCheckout.setOnClickListener {
 
-        override fun onAuthorizationError() {
-          paymentDeclinedModel.show(childFragmentManager, "paymentDeclinedModel")
-        }
-      })
+      MyOutLetBridge.viewModel?.addProductToCart(CateItem(
+        title = args.product.title,
+        price = args.product.price,
+        url = args.product.url,
+      ))
     }
 
     setProduct()
+
+    viewModel?.actualProduct?.observe(viewLifecycleOwner){ products ->
+      viewModel.contNumber.value = products.size
+      binding.txtProdSize.text = products.size.toString()
+    }
 
   }
 
@@ -79,12 +80,12 @@ internal class ProductFragment : Fragment() {
 
     fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
 
-    binding.txtProdName.text = viewModel?.actualProduct?.value?.title?.capitalizeWords()
-    binding.txtProdPrice.text = "$${viewModel?.actualProduct?.value?.price}"
-    binding.txtProdDescricao.text = viewModel?.actualProduct?.value?.description?.capitalize()
+    binding.txtProdName.text = args.product.title.capitalizeWords()
+    binding.txtProdPrice.text = "$${args.product.price.capitalizeWords()}"
+    binding.txtProdDescricao.text = args.product.description.capitalize()
 
     val prodImage = binding.imgProd
-    val image = viewModel?.actualProduct?.value?.url
+    val image = args.product.url
 
     Picasso.get().load(image).into(prodImage)
 

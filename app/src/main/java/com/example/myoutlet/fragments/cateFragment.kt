@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,19 +63,9 @@ class CateFragment : Fragment(), CateAdapter.OnItemClickListener {
     Log.d("wwwd", "onPause CateFragment")
   }
 
-  override fun onItemClick(position: Int) {
+  override fun onItemClick(position: Int, productInfo: CateItem) {
+
     val data = cateArrayList[position]
-
-    MyOutLetBridge.viewModel?.actualProduct?.postValue(Product(
-      "${data.title}",
-      "${data.url}",
-      "${data.price}",
-      "${data.description}"
-    ))
-    MyOutLetBridge.viewModel?.actualProduct?.observe(viewLifecycleOwner){
-      println("${it.title}, ${it.url}, ${it.price}, ${it.description}")
-    }
-
 
     val action = CateFragmentDirections.fromCateFragmenttoProductFragment(
       product = Product(
