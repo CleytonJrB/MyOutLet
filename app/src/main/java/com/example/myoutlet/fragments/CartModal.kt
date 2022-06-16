@@ -1,11 +1,9 @@
 package com.example.myoutlet.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,20 +52,20 @@ class CartModal : BottomSheetDialogFragment() {
     cartRecyclerView.adapter = cartAdapter
     cartArrayList = ArrayList()
 
-    if(MyOutLetBridge.viewModel?.actualProduct?.value == null){
+    if(MyOutLetBridge.viewModel?.products?.value == null){
       binding.txtCartEnable.visibility = View.VISIBLE
     }
     binding.recyclerViewCartModal.visibility = View.VISIBLE
-    cartAdapter.setData(MyOutLetBridge.viewModel?.actualProduct?.value!!)
+    cartAdapter.setData(MyOutLetBridge.viewModel?.products?.value!!)
 
     binding.btnKlarnaP.setOnClickListener {
       KlarnaSingleton.showPaymentView(object : OrderResponseCallBack {
         override fun onAuthorizationSuccess() {
-          MyOutLetBridge.viewModel!!.actualProduct.value!!.clear()
+          MyOutLetBridge.viewModel!!.products.value!!.clear()
           paymentSuccessModel.show(childFragmentManager, "paymentSuccessModel")
         }
         override fun onAuthorizationError() {
-          MyOutLetBridge.viewModel!!.actualProduct.value!!.clear()
+          MyOutLetBridge.viewModel!!.products.value!!.clear()
           paymentDeclinedModel.show(childFragmentManager, "paymentDeclinedModel")
         }
       })

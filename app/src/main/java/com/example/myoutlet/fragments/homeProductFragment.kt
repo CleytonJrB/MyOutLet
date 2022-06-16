@@ -23,7 +23,7 @@ class HomeProductFragment : Fragment() {
   private var _binding: FragmentListBinding? = null
   private val binding get() = _binding!!
 
-  private lateinit var viewModel: ProductViewModel
+  private val viewModel = MyOutLetBridge.viewModel
 
   private lateinit var cardRecyclerview: RecyclerView
   private lateinit var cardArrayList: ArrayList<Cards>
@@ -62,16 +62,11 @@ class HomeProductFragment : Fragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProvider(
-      this,
-      ProductViewModel.MainViewModelFactory(ProductRepository())
-    ).get(ProductViewModel::class.java)
 
-    MyOutLetBridge.viewModel = viewModel
 
     println("HOME FRAGMENT VIEWMODE ${MyOutLetBridge.viewModel!!.modalState.value.toString()}")
 
-    viewModel.modalState.observe(viewLifecycleOwner) { state ->
+    viewModel?.modalState?.observe(viewLifecycleOwner) { state ->
       println(state.toString())
       if (state == ModalState.ON_SUCCESS) {
 //          findNavController().navigate(R.id.fromPaymentSuccesstoProductFragment)

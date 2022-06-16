@@ -9,15 +9,13 @@ import com.example.myoutlet.model.CateItem
 internal class ProductViewModel(private val productRepository: ProductRepository) : ViewModel() {
 
   val modalState = MutableLiveData(ModalState.ON_CHOOSING)
-  val actualProduct = MutableLiveData<MutableList<CateItem>>()
-
-  val contNumber = MutableLiveData<Int>()
+  val products = MutableLiveData<MutableList<CateItem>>()
 
   fun addProductToCart(product: CateItem){
     var newValue: MutableList<CateItem> = mutableListOf()
-    actualProduct.value?.forEach { product -> newValue.add(product) }
+    products.value?.forEach { product -> newValue.add(product) }
     newValue.add(product)
-    actualProduct.value = newValue
+    products.value = newValue
   }
 
 

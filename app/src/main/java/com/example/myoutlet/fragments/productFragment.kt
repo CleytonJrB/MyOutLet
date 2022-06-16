@@ -10,14 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myoutlet.MyOutLetBridge
 import com.example.myoutlet.R
-import com.example.myoutlet.databinding.FragmentHeaderBinding
 import com.example.myoutlet.databinding.PgProductBinding
-import com.example.myoutlet.interfaces.OrderResponseCallBack
-import com.example.myoutlet.klarna.KlarnaSingleton
-import com.example.myoutlet.klarna.klarnaReponse.PaymentDeclined
-import com.example.myoutlet.klarna.klarnaReponse.PaymentSuccess
 import com.example.myoutlet.model.CateItem
-import com.example.myoutlet.model.Product
 import com.squareup.picasso.Picasso
 
 internal class ProductFragment : Fragment() {
@@ -56,14 +50,7 @@ internal class ProductFragment : Fragment() {
         url = args.product.url,
       ))
     }
-
     setProduct()
-
-    viewModel?.actualProduct?.observe(viewLifecycleOwner){ products ->
-      viewModel.contNumber.value = products.size
-      binding.txtProdSize.text = products.size.toString()
-    }
-
   }
 
   override fun onResume() {
