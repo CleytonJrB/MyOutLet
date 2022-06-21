@@ -58,11 +58,11 @@ class CartModal : BottomSheetDialogFragment() {
     binding.btnKlarnaP.setOnClickListener {
       KlarnaSingleton.showPaymentView(object : OrderResponseCallBack {
         override fun onAuthorizationSuccess() {
-          MyOutLetBridge.viewModel!!.products.value!!.clear()
+//          MyOutLetBridge.viewModel!!.products.value!!.clear()
           paymentSuccessModel.show(childFragmentManager, "paymentSuccessModel")
         }
         override fun onAuthorizationError() {
-          MyOutLetBridge.viewModel!!.products.value!!.clear()
+//          MyOutLetBridge.viewModel!!.products.value!!.clear()
           paymentDeclinedModel.show(childFragmentManager, "paymentDeclinedModel")
         }
       })

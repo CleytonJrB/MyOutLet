@@ -53,6 +53,7 @@
             android:layout_alignTop="@id/cart_icon"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:visibility="visible"
             android:background="@drawable/back_cont_cart"
             android:fontFamily="sans-serif-black"
             android:gravity="center"

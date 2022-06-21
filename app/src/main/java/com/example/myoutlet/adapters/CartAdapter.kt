@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myoutlet.MyOutLetBridge
 import com.example.myoutlet.databinding.CardCartModalBinding
 import com.example.myoutlet.model.CateItem
 import com.squareup.picasso.Picasso
@@ -15,7 +16,8 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartHolder>() {
   private var _binding: CardCartModalBinding? = null
   private val binding get() = _binding!!
 
-  private var cartList = emptyList<CateItem>()
+  private var cartList: MutableList<CateItem> = mutableListOf()
+//  emptyList<CateItem>()
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartHolder {
     _binding = CardCartModalBinding.inflate(LayoutInflater.from(parent.context))
@@ -34,14 +36,16 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartHolder>() {
     val imageTarget = cartItem.url
     Picasso.get().load(imageTarget).into(holder.url)
 
-
+    holder.remove.setOnClickListener {
+      removeAt(position)
+      println(position+1) }
   }
 
   override fun getItemCount(): Int {
     return cartList.size
   }
 
-  fun setData(newCartList: List<CateItem>) {
+  fun setData(newCartList: MutableList<CateItem>) {
     cartList = newCartList
     notifyDataSetChanged()
 
@@ -51,10 +55,17 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartHolder>() {
 //    diffResult.dispatchUpdatesTo(this)
   }
 
+  private fun removeAt(position: Int) {
+    cartList.removeAt(position)
+    notifyItemRemoved(position)
+    notifyItemRangeChanged(position, cartList.size)
+  }
+
   inner class CartHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val name: TextView = binding.txtCartModalName
     val price: TextView = binding.txtCartModalPrice
     var url: ImageView = binding.imageViewCartModal
+    val remove: ImageView = binding.btnCartModalRemove
 
   }
 }

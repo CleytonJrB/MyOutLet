@@ -39,9 +39,16 @@ class HeaderFragment : Fragment() {
 
     val cartModal = CartModal()
 
+    binding.contCartNumber.visibility = View.INVISIBLE
+
     MyOutLetBridge.viewModel?.products?.observe(viewLifecycleOwner) { products ->
-      println("TESTE HEADER TAMANHO " + products.size)
-      binding.contCartNumber.text = products.size.toString()
+      if (products.size >= 1) {
+        binding.contCartNumber.visibility = View.VISIBLE
+        println("TESTE HEADER TAMANHO " + products.size)
+        MyOutLetBridge.viewModel!!.contNumber.value = products.size
+        binding.contCartNumber.text = MyOutLetBridge.viewModel!!.contNumber.value.toString()
+//        products.size.toString()
+      }
     }
 
     binding.cartIcon.setOnClickListener {
