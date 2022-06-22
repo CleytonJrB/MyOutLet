@@ -5,13 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myoutlet.MyOutLetBridge
 import com.example.myoutlet.databinding.CardCartModalBinding
 import com.example.myoutlet.model.CateItem
 import com.squareup.picasso.Picasso
 
-class CartAdapter : RecyclerView.Adapter<CartAdapter.CartHolder>() {
+class CartAdapter: RecyclerView.Adapter<CartAdapter.CartHolder>() {
 
   private var _binding: CardCartModalBinding? = null
   private val binding get() = _binding!!
@@ -38,7 +39,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartHolder>() {
 
     holder.remove.setOnClickListener {
       removeAt(position)
-      println(position+1) }
+    }
   }
 
   override fun getItemCount(): Int {
@@ -49,14 +50,17 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartHolder>() {
     cartList = newCartList
     notifyDataSetChanged()
 
-//    val diffUtil = DiffUtilsCartModal(cartList, newCartList)
-//    val diffResult = DiffUtil.calculateDiff(diffUtil)
-//    cartList = newCartList
-//    diffResult.dispatchUpdatesTo(this)
   }
 
   private fun removeAt(position: Int) {
-    cartList.removeAt(position)
+    var currentProducts = MyOutLetBridge.viewModel?.products?.value
+
+    currentProducts?.removeAt(position)
+
+    MyOutLetBridge.viewModel?.products?.postValue(currentProducts)
+
+//    cartList.removeAt(position)
+
     notifyItemRemoved(position)
     notifyItemRangeChanged(position, cartList.size)
   }

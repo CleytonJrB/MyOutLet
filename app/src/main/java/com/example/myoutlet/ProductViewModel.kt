@@ -11,8 +11,6 @@ internal class ProductViewModel(private val productRepository: ProductRepository
   val modalState = MutableLiveData(ModalState.ON_CHOOSING)
   val products = MutableLiveData<MutableList<CateItem>>()
 
-  val contNumber = MutableLiveData<Int>()
-
   fun addProductToCart(product: CateItem){
     var newValue: MutableList<CateItem> = mutableListOf()
     products.value?.forEach { product -> newValue.add(product) }

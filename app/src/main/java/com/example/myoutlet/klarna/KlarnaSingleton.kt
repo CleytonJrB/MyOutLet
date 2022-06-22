@@ -12,6 +12,7 @@ import com.klarna.mobile.sdk.api.payments.KlarnaPaymentCategory
 import com.klarna.mobile.sdk.api.payments.KlarnaPaymentView
 import com.klarna.mobile.sdk.api.payments.KlarnaPaymentViewCallback
 import com.klarna.mobile.sdk.api.payments.KlarnaPaymentsSDKError
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -23,6 +24,7 @@ internal object KlarnaSingleton : KlarnaPaymentViewCallback {
   private val myOutletBridge = MyOutLetBridge
   private lateinit var klarnaCallBack: OrderResponseCallBack
 
+  @OptIn(DelicateCoroutinesApi::class)
   @SuppressLint("MissingPermission")
   fun initialize(activity: AppCompatActivity, payView: KlarnaPaymentView) {
 
@@ -86,6 +88,7 @@ internal object KlarnaSingleton : KlarnaPaymentViewCallback {
 
   override fun onInitialized(view: KlarnaPaymentView) {
     view.load(null)
+    Log.e("LOGKLarna", "onInitialized ")
   }
 
   override fun onLoadPaymentReview(view: KlarnaPaymentView, showForm: Boolean) {}

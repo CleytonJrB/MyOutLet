@@ -67,6 +67,13 @@ class CateFragment : Fragment(), CateAdapter.OnItemClickListener {
 
     val data = cateArrayList[position]
 
+//    val teste = productInfo.also { teste ->
+//      teste.title = "TESTE TESTEasdas"
+//      teste.price = "TESASADSD QWE asdas"
+//    }
+//
+//    Log.d("LOGCATEFRAGMENT"," : $teste")
+
     val action = CateFragmentDirections.fromCateFragmenttoProductFragment(
       product = Product(
         "${data.title}",

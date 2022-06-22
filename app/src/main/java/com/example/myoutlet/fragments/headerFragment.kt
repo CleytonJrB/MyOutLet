@@ -10,6 +10,10 @@ import com.example.myoutlet.MyOutLetBridge
 import com.example.myoutlet.ProductRepository
 import com.example.myoutlet.ProductViewModel
 import com.example.myoutlet.databinding.FragmentHeaderBinding
+import com.example.myoutlet.interfaces.OrderResponseCallBack
+import com.example.myoutlet.klarna.KlarnaSingleton
+import com.example.myoutlet.klarna.klarnaReponse.PaymentDeclined
+import com.example.myoutlet.klarna.klarnaReponse.PaymentSuccess
 
 class HeaderFragment : Fragment() {
 
@@ -40,22 +44,29 @@ class HeaderFragment : Fragment() {
     val cartModal = CartModal()
 
     binding.contCartNumber.visibility = View.INVISIBLE
+    println("TESTEPRODUCTS FORA ${MyOutLetBridge.viewModel!!.products.value?.size}")
 
     MyOutLetBridge.viewModel?.products?.observe(viewLifecycleOwner) { products ->
+      if(MyOutLetBridge.viewModel!!.products.value?.size == 0){
+        binding.contCartNumber.visibility = View.INVISIBLE
+      }
+      println("TESTEPRODUCTS  DENTRO ${MyOutLetBridge.viewModel!!.products.value?.size}")
+
       if (products.size >= 1) {
         binding.contCartNumber.visibility = View.VISIBLE
-        println("TESTE HEADER TAMANHO " + products.size)
-        MyOutLetBridge.viewModel!!.contNumber.value = products.size
-        binding.contCartNumber.text = MyOutLetBridge.viewModel!!.contNumber.value.toString()
-//        products.size.toString()
+        binding.contCartNumber.text = products.size.toString()
+        println("TESTE HEADER TAMANHO " +products.size.toString())
       }
     }
 
-    binding.cartIcon.setOnClickListener {
-      cartModal.show(childFragmentManager, "cart_modal")
+
+    binding.txtHeader.setOnClickListener {
     }
     binding.btnBackPress.setOnClickListener {
       activity!!.onBackPressed()
+    }
+    binding.cartIcon.setOnClickListener {
+      if(!cartModal.isVisible) cartModal.show(childFragmentManager, "cart_modal")
     }
   }
 }
